@@ -1,0 +1,1297 @@
+:root {
+  --ink: #0B0B10;
+  --muted: #6E6E7E;
+  --accent: #9B7CFF;
+  --accent-light: #C9A8FF;
+  --gold: #e6c07e;
+  --bg: #ffffff;
+  --glass: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.28);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: linear-gradient(135deg, #f5f5f7 0%, #e0e0e8 100%);
+  color: var(--ink);
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* VIDEO */
+#heroVideo {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  background: linear-gradient(135deg, #f5f5f7 0%, #e0e0e8 100%);
+}
+
+/* SECOND VIDEO SECTION */
+.video-section {
+  position: relative;
+  height: 100vh;          /* VISUAL HEIGHT */
+  overflow: hidden;
+}
+
+.video-section-player {
+  position: absolute;     /* NOT fixed here */
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* SCROLL FUEL — REMOVED FROM FLOW */
+.scroll-length {
+  position: absolute;
+  top: 100vh;             /* starts AFTER visible section */
+  left: 0;
+  width: 1px;
+  height: 500vh;          /* extended so video2 scrubs longer */
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Combined white block for Offerings, Testimonials, and Pricing */
+#offerings.combined-section {
+  background: #ffffff; /* whole combined area is white */
+  padding: 56px 0; /* increased outer vertical spacing for the block */
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(8,8,12,0.06);
+  overflow: hidden;
+}
+#offerings.combined-section .combined-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10vw;
+}
+#offerings.combined-section .combined-block {
+  padding: 64px 0; /* more spacing between sub-sections */
+  border-bottom: 1px solid rgba(8,8,12,0.04);
+}
+#offerings.combined-section .combined-block:last-child { border-bottom: none; padding-bottom: 0; }
+
+/* Center the pricing area and ensure cards are centered */
+#offerings.combined-section .pricing-block {
+  text-align: center;
+}
+#offerings.combined-section .pricing-block .pricing-cards {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  #offerings.combined-section { padding: 44px 0; border-radius: 8px; }
+  #offerings.combined-section .combined-inner { padding: 0 6vw; }
+  #offerings.combined-section .combined-block { padding: 36px 0; }
+  #offerings.combined-section .pricing-block .pricing-cards { flex-direction: column; gap: 18px; align-items: center; }
+}
+
+
+/* ensure glass card in about section centers nicely */
+.about-grid .glass-card { align-self: center; }
+
+
+/* optional overlay to match aesthetics */
+.video-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.22) 100%);
+  pointer-events: none;
+  z-index: 0;
+} 
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+.nav-content {
+  display: flex;
+  gap: 48px;
+  padding: 16px 40px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  animation: navEnter 0.8s ease-out;
+}
+
+@keyframes navEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile nav: show only Home, Services, Contact */
+@media (max-width: 768px) {
+  .nav-content a { display: none; }
+  .nav-content a[href="#home"], .nav-content a[href="#services"], .nav-content a[href="#contact"] { display: inline-block; }
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* SECTIONS */
+.section {
+  min-height: 100vh;
+  padding: 60px 10vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.section:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.section:nth-child(even) {
+  justify-content: flex-end;
+}
+
+/* HOME */
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding-top: 120px; /* moved down slightly to visually center */
+  padding-bottom: 40px;
+}
+
+.home-content {
+  animation: homeContentFade 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@keyframes homeContentFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headline {
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.9;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  animation: headlineIn 1.2s ease-out;
+  font-weight: 700;
+  text-align: center;
+}
+
+@keyframes headlineIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headline .line {
+  display: block;
+  overflow: hidden;
+}
+
+.headline .line.top {
+  animation: slideInUp 0.8s ease-out 0.1s backwards;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.headline .line.bottom {
+  animation: slideInUp 0.8s ease-out 0.2s backwards;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* GLASS CARD */
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(72px);
+  -webkit-backdrop-filter: blur(72px);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 48px 40px;
+  max-width: 540px;
+  box-shadow: 0 12px 40px rgba(8, 8, 12, 0.12), 0 2px 8px rgba(155, 124, 255, 0.04);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s;
+  opacity: 0;
+  animation: glassCardEnter 0.8s ease-out forwards;
+}
+
+@keyframes glassCardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.36);
+  box-shadow: 0 20px 60px rgba(8, 8, 12, 0.16), 0 4px 18px rgba(230, 192, 126, 0.06);
+  transform: translateY(-8px) scale(1.01);
+}
+
+.glass-card p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.glass-card span {
+  display: block;
+  margin-bottom: 12px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.glass-card span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SERVICES BACKGROUND (soft opaque tint) */
+.services-glass {
+  background: linear-gradient(135deg, #F6F2FF 0%, #FFF7ED 100%);
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow: 0 18px 50px rgba(8,8,12,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.services-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.services-content { flex: 1 1 55%; min-width: 260px; }
+
+.services-image-wrap { flex: 0 0 40%; display: flex; justify-content: center; align-items: center; }
+
+.services-image {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(8,8,12,0.10);
+  border: 1px solid rgba(155,124,255,0.14);
+  transition: transform 0.45s cubic-bezier(0.2,0.9,0.2,1), box-shadow 0.45s;
+}
+.services-image:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(8,8,12,0.12);
+}
+
+@media (max-width: 900px) {
+  .services-inner { flex-direction: column-reverse; gap: 20px; padding-top: 20px; }
+  .services-image-wrap { width: 100%; }
+  .services-image { max-width: 100%; border-radius: 12px; }
+  .services-glass { padding: 28px; }
+}
+
+/* SERVICE TITLE */
+.service-title,
+.portfolio-title,
+.offerings-title,
+.testimonials-title,
+.pricing-title,
+.contact-title {
+  font-family: "Bodoni Moda", serif;
+  font-size: 2.8rem;
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--ink), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  background-clip: text;
+}
+
+/* SERVICE GRID */
+.service-grid,
+.portfolio-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.service-item,
+.portfolio-item,
+.offering-item {
+  padding: 24px;
+  background: rgba(155, 124, 255, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(155, 124, 255, 0.1);
+  transition: all 0.4s ease;
+  animation: itemSlideIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.service-item:nth-child(1) { animation-delay: 0.1s; }
+.service-item:nth-child(2) { animation-delay: 0.2s; }
+.service-item:nth-child(3) { animation-delay: 0.3s; }
+.service-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes itemSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.service-item:hover,
+.portfolio-item:hover,
+.offering-item:hover {
+  background: rgba(155, 124, 255, 0.15);
+  border-color: rgba(155, 124, 255, 0.3);
+  transform: translateX(10px);
+}
+
+.service-icon,
+.portfolio-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 16px;
+  color: var(--accent);
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.service-item h3,
+.portfolio-item h3,
+.offering-item hCormorant Garamond
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.service-item p,
+.portfolio-item p,
+.offering-item p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* OFFERINGS LIST */
+.offerings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.offering-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(155, 124, 255, 0.1);
+}
+
+.offering-item:last-child {
+  border-bottom: none;
+}
+
+.check {
+  color: var(--accent);
+  font-size: 1.8rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 4px;
+  animation: checkScale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes checkScale {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* TESTIMONIALS */
+.testimonial-item {
+  background: rgba(155, 124, 255, 0.08);
+  border: 1px solid rgba(155, 124, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  animation: testimonialSlide 0.7s ease-out forwards;
+  opacity: 0;
+}
+
+.testimonial-item:nth-child(1) { animation-delay: 0.1s; }
+.testimonial-item:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes testimonialSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.testimonial-item:hover {
+  background: rgba(155, 124, 255, 0.12);
+  border-color: rgba(155, 124, 255, 0.2);
+}
+
+.testimfamily: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-weight: 4 12px;
+  font-weight: 300;
+}
+family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 65rem;
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* PRICING */
+.price-card {
+  background: rgba(155, 124, 255, 0.08);
+  border: 1px solid rgba(155, 124, 255, 0.1);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 16px;
+  transition: all 0.4s ease;
+  animation: priceCardEnter 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.price-card:nth-child(1) { animation-delay: 0.1s; }
+.price-card:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes priceCardEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.price-card:hover {
+  background: rgba(155, 124, 255, 0.15);
+  border-color: rgba(155, 124, 255, 0.3);
+  transform: scale(1.02);
+}
+
+.price-card.premium {
+  background: linear-gradient(135deg, rgba(155, 124, 255, 0.15), rgba(201, 168, 255, 0.1));
+  border: 1px solid rgba(155, 124, 255, 0.2);
+}
+
+.price-card h3 {Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-weight: 600px;
+  color: var(--ink);
+}
+
+.price {
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.price-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* CONTACT CARD */
+.contact-card {
+  text-align: left;
+  max-width: 450px;
+  flex-shrink: 0;
+}
+
+/* SOLID (WHITE) SECTIONS */
+.solid-section {
+  background: #fff;
+  color: #0b0b10;
+  padding: 80px 10vw;
+}
+
+.solid-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 40px;
+  align-items: center;
+  max-width: 1100px;
+}
+
+.about-title {
+  font-family: "Bodoni Moda", serif;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+
+.about-lead {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.about-more {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.about-img-placeholder {
+  width: 100%;
+  height: 380px;
+  background: linear-gradient(135deg, rgba(155,124,255,0.08), rgba(230,192,126,0.06));
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(8,8,12,0.06);
+}
+
+/* PORTFOLIO: FULL SECTION DARK */
+#portfolio {
+  background: #0e0f0f; /* full section background */
+  color: #ffffff;
+}
+
+/* inner container should be transparent so the section color shows through */
+.portfolio-dark {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+.portfolio-left { flex: 0 0 40%; display: flex; justify-content: center; align-items: center; }
+.portfolio-right { flex: 1 1 60%; padding-left: 32px; }
+.portfolio-image { width: 100%; max-width: 420px; height: auto; border-radius: 12px; object-fit: cover; box-shadow: none; border: none; }
+#portfolio .portfolio-title {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.2rem, 7.5vw, 6rem);
+  line-height: 0.9;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/* Smaller Philosophy title */
+#philosophy .portfolio-title {
+  font-size: clamp(2.0rem, 4.2vw, 3rem);
+  line-height: 1.0;
+  margin-bottom: 12px;
+}
+
+/* Apply the same bold modern heading style to other major section headers */
+.offerings-title,
+.testimonials-title,
+.pricing-title {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.2rem, 7.5vw, 6rem);
+  line-height: 0.9;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: none;
+  text-shadow: none;
+}
+.portfolio-dark .portfolio-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); color: #ffffff; }
+.portfolio-dark .portfolio-icon { color: var(--accent-light); }
+
+@media (max-width: 900px) {
+  #portfolio { padding: 40px 10vw; }
+  .portfolio-dark { flex-direction: column; padding: 0; }
+  .portfolio-left { width: 100%; }
+  .portfolio-image { max-width: 100%; }
+  .portfolio-right { padding-left: 0; padding-top: 20px; }
+}
+
+/* OFFERINGS CARDS */
+.offerings-grid {
+  display: flex;
+  gap: 28px;
+  margin-top: 28px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.offering-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 12px 32px rgba(8,8,12,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  text-align: center; /* centered content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 260px;
+}
+
+/* Mobile: stack offerings vertically and make cards centered with reduced width and internal spacing */
+@media (max-width: 768px) {
+  .offerings-grid {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* center items horizontally */
+    padding: 0 6vw; /* add side padding so cards don't hit edge */
+    width: 100%;
+  }
+  .offering-card {
+    min-width: auto;
+    width: 30%; /* limit to 86% of device width */
+    max-width: 30%;
+    margin: 0 auto; /* center card */
+    padding: 24px; /* inner spacing */
+    box-sizing: border-box;
+  }
+}
+
+/* Luxurious, modern typography */
+.service-title, .portfolio-title, .offerings-title, .testimonials-title, .pricing-title, .contact-title {
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(2rem, 2.6vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.about-lead, .testimonial-text, .about-more {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+body { font-family: "DM Sans", sans-serif; }
+
+/* Center testimonial text */
+.testimonial-card { text-align: center; }
+
+
+.card-icon {
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.offering-card h4 {
+  margin-bottom: 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+}
+
+.offering-card p {
+  font-family: "DM Sans", sans-serif;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* TESTIMONIAL CAROUSEL */
+.testimonial-carousel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.testimonial-track {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 6px;
+}
+
+.testimonial-loop-wrap {
+  display: flex;
+  align-items: stretch;
+  will-change: transform;
+}
+
+.testimonial-loop {
+  display: flex;
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* ensure loop wrap doesn't collapse */
+.testimonial-loop-wrap, .testimonial-loop { align-items: center; }
+.testimonial-track.is-dragging {
+  cursor: grabbing;
+}
+
+.testimonial-card {
+  min-width: 420px; /* widened horizontally */
+  max-width: 520px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 18px 40px rgba(8,8,12,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+  flex-shrink: 0;
+}
+
+/* Spacing handled above for offerings/testimonials/pricing to ensure consistent reduced spacing */
+/* (Removed duplicated rules) */
+
+/* Ensure About glass uses same styling explicitly */
+.about .glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(72px);
+  -webkit-backdrop-filter: blur(72px);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  padding: 48px 40px;
+  max-width: 540px;
+  box-shadow: 0 12px 40px rgba(8, 8, 12, 0.12), 0 2px 8px rgba(155, 124, 255, 0.04);
+} 
+
+.testimonial-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.testimonial-author {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.carousel-btn {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(8,8,12,0.06);
+}
+
+.carousel-btn:hover { transform: translateY(-3px); }
+
+/* PRICING CENTERED */
+.pricing-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.pricing-cards {
+  display: flex;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.price-card.centered {
+  min-width: 300px;
+  text-align: center;
+}
+
+/* small screens adjustments */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .offerings-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-cards { flex-direction: column; align-items: center; }
+  .testimonial-card { min-width: 260px; max-width: 260px; }
+}
+
+/* ensure AOS animations are honored */
+[data-aos] { will-change: transform, opacity; }
+
+.contact-card h3 {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.booking-subtitle {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.contact-wrapper {
+  display: flex;
+  align-items: stretch; /* ensure equal-height columns */
+  gap: 60px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.contact-left {
+  flex: 1;
+}
+
+/* Make both contact sides match height and center their content */
+.contact-white, .contact-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 280px;
+}
+
+/* Center specific section titles */
+.offerings-title, .testimonials-title { text-align: center; }
+
+
+/* left card: transparent on yellow background, playful bold typography */
+#contact { background: #fdff00; color: var(--ink); }
+
+.contact-white {
+  background: transparent;
+  border-radius: 0;
+  padding: 32px;
+  box-shadow: none;
+  border: none;
+}
+
+.contact-left .contact-title {
+  font-family: 'Baloo 2', 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 18px;
+  color: var(--ink);
+  font-weight: 800;
+  background: none;
+  -webkit-text-fill-color: unset;
+}
+
+.contact-left .contact-subtitle {
+  font-family: 'Baloo 2', 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.contact-left .contact-details p {
+  font-family: 'Baloo 2', 'Poppins', sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Responsive: stack contact and ensure card full-width on small screens */
+@media (max-width: 880px) {
+  .contact-wrapper { flex-direction: column; gap: 24px; }
+  .contact-white { width: 100%; padding: 24px; }
+  .contact-card { width: 100%; }
+}
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-details p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-details i {
+  color: var(--accent);
+  font-size: 1.1rem;
+  width: 20px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(155, 124, 255, 0.1);
+  margin: 24px 0;
+}
+
+.cta-text {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+/* BUTTON */
+button,
+.book-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  border: none;
+  padding: 16px 40px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 600;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(155, 124, 255, 0.3);
+  animation: buttonPulse 2s ease-in-out infinite;
+  font-family: "DM Sans", sans-serif;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid rgba(155, 124, 255, 0.3);
+  color: var(--ink);
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  animation: none;
+  box-shadow: none;
+}
+
+.secondary-btn i {
+  font-size: 0.85rem;
+}
+
+.secondary-btn:hover {
+  background: rgba(155, 124, 255, 0.08);
+  border-color: rgba(155, 124, 255, 0.5);
+  transform: translateX(4px);
+}
+
+.book-btn {
+  margin-bottom: 0;
+}
+
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(155, 124, 255, 0.3); }
+  50% { box-shadow: 0 12px 32px rgba(155, 124, 255, 0.4); }
+}
+
+button:hover,
+.book-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(155, 124, 255, 0.5);
+}
+
+button:active,
+.book-btn:active {
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+.footer {
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #ffffff; /* white text */
+  background: #000000; /* black background */
+  letter-spacing: 0.08em;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ALIGNMENTS */
+.right {
+  margin-left: auto;
+}
+
+.left {
+  margin-right: auto;
+}
+
+/* SCROLL CONTAINER */
+.scroll-container {
+  position: relative;
+  z-index: 2;
+}
+
+#scroll {
+  position: relative;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .headline {
+    font-size: clamp(2.8rem, 8vw, 5.2rem);
+  }
+
+  .home {
+    padding-top: 60px; /* slightly less padding on smaller screens */
+  }
+
+  .nav-content {
+    gap: 24px;
+    padding: 12px 24px;
+    font-size: 0.8rem;
+  }
+
+  .glass-card {
+    max-width: 100%;
+    padding: 32px 24px;
+  }
+
+  .right,
+  .left {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .service-title,
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 40px 20px;
+    justify-content: center !important;
+  }
+
+  .offering-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .check {
+    margin-top: 0;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .contact-card {
+    max-width: 100%;
+  }
+
+  .contact-left .contact-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .contact-left .contact-subtitle {
+    text-align: center;
+  }
+
+  .contact-details {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .contact-details p {
+    justify-content: center;
+  }
+
+  button,
+  .book-btn {
+    width: auto;
+  }
+}
+
+/* Section titles: Portfolio remains prominent; other section titles slightly smaller */
+.portfolio-title {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3.2rem, 7.5vw, 6rem); /* keep portfolio large */
+  line-height: 0.9;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.offerings-title, .testimonials-title, .pricing-title {
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.8vw, 3.2rem); /* reduced slightly more */
+  line-height: 1.02;
+  margin-bottom: 8px;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

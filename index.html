@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- BASIC META -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+<title>Beauty Studio — Luxury Makeup, Hair & Beauty Experience</title>
+
+<meta name="description" content="A luxury beauty studio offering refined makeup, hair, lashes, and brows. A cinematic, modern beauty experience crafted with precision and elegance." />
+
+<meta name="keywords" content="beauty studio, makeup artist, luxury beauty, hair styling, lashes, brows, beauty store, professional makeup" />
+
+<meta name="author" content="Beauty Studio" />
+<meta name="robots" content="index, follow" />
+
+<!-- THEME / UI -->
+<meta name="theme-color" content="#ffffff" />
+<meta name="color-scheme" content="light" />
+
+<!-- FAVICONS -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icon.png" />
+<link rel="shortcut icon" href="assets/icon.png" />
+
+<!-- OPEN GRAPH (FACEBOOK, LINKEDIN, WHATSAPP) -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Beauty Studio — Luxury Beauty Experience" />
+<meta property="og:description" content="A refined beauty studio delivering luxury makeup, hair, lashes, and brows with cinematic elegance." />
+<meta property="og:image" content="assets/img3.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://yourdomain.com" />
+<meta property="og:site_name" content="Beauty Studio" />
+
+<!-- TWITTER / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Beauty Studio — Luxury Beauty Experience" />
+<meta name="twitter:description" content="Luxury makeup, hair, lashes, and brows presented in a cinematic, modern beauty studio." />
+<meta name="twitter:image" content="assets/img3.png" />
+
+<!-- PERFORMANCE OPTIMIZATION -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- OPTIONAL: PRELOAD HERO VIDEO (IMPROVES FIRST PLAY) -->
+<link rel="preload" as="video" href="assets/video.mp4" type="video/mp4" />
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Bodoni+Moda:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollSmoother.min.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+  <video id="heroVideo" class="video-background" src="assets/video.mp4" muted playsinline preload="auto" poster=""></video>
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-content">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- SCROLL CONTENT -->
+  <div id="smooth-wrapper" class="scroll-container">
+    <main id="smooth-content">
+
+    <!-- HOME -->
+    <section id="home" class="section home">
+      <div class="home-content">
+        <h1 class="headline" aria-label="Beauty Refined">
+          <span class="line top" data-aos="fade-down" data-aos-duration="900" data-aos-easing="ease-in-out">Beauty,</span>
+          <span class="line bottom" data-aos="fade-up" data-aos-duration="900" data-aos-delay="150" data-aos-easing="ease-in-out">Refined.</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+  
+       <section id="philosophy" class="section portfolio">
+      <div class="glass-card right" data-aos="fade-left" data-aos-duration="900">
+        <h2 class="portfolio-title">Our Philosophy</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+            
+             <p class="about-lead">We craft beauty with intention, precision, and quiet confidence. Each appointment is a tailored experience designed around you.</p>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section services-intro services-glass">
+      <div class="services-inner container" data-aos="fade-up" data-aos-duration="900">
+        <div class="services-content">
+          <h2 class="service-title">Premium Services</h2>
+          <div class="service-grid">
+            <div class="service-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+              <i class="fas fa-sparkles service-icon"></i>
+              <h3>Lash Extensions</h3>
+              <p>Luxury lash extensions crafted to perfection</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+              <i class="fas fa-feather service-icon"></i>
+              <h3>Eyebrow Design</h3>
+              <p>Precision brow sculpting for your face</p>
+            </div>
+          </div>
+        </div>
+        <div class="services-image-wrap" data-aos="fade-left" data-aos-duration="900">
+          <img src="assets/img.png" alt="Service preview" class="services-image" />
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section portfolio">
+      <div class="portfolio-dark container" data-aos="fade-up" data-aos-duration="900">
+        <div class="portfolio-left" data-aos="fade-right" data-aos-duration="900">
+          <img src="assets/img2.png" alt="Portfolio preview" class="portfolio-image" />
+        </div>
+        <div class="portfolio-right">
+          <h2 class="portfolio-title">Our Artistry</h2>
+          <div class="portfolio-grid">
+            <div class="portfolio-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+              <i class="fas fa-palette portfolio-icon"></i>
+              <h3>Makeup Artistry</h3>
+              <p>Bespoke makeup designs for every occasion</p>
+            </div>
+            <div class="portfolio-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+              <i class="fas fa-scissors portfolio-icon"></i>
+              <h3>Hair Styling</h3>
+              <p>Transform your look with our expert stylists</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO 2 SECTION -->
+<section id="video2-section" class="section video-section">
+  <video
+    class="video-section-player"
+    src="assets/video2.mp4"
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+
+  <!-- THIS CONTROLS SCROLL LENGTH -->
+  <div class="scroll-length"></div>
+</section>
+
+
+    <!-- COMBINED: OFFERINGS / TESTIMONIALS / PRICING -->
+    <section id="offerings" class="section offerings combined-section">
+      <div class="combined-inner container" data-aos="fade-up">
+
+        <div class="combined-block offerings-block" data-aos="fade-up">
+          <h2 class="offerings-title">Our Offerings</h2>
+          <div class="offerings-grid">
+            <div class="offering-card" data-aos="fade-up" data-aos-delay="100">
+              <i class="fas fa-hand-holding-water card-icon"></i>
+              <h4>Consultation</h4>
+              <p>Personal style analysis and customization</p>
+            </div>
+            <div class="offering-card" data-aos="fade-up" data-aos-delay="200">
+              <i class="fas fa-box-open card-icon"></i>
+              <h4>Premium Products</h4>
+              <p>Only the finest luxury beauty products</p>
+            </div>
+            <div class="offering-card" data-aos="fade-up" data-aos-delay="300">
+              <i class="fas fa-star card-icon"></i>
+              <h4>VIP Experience</h4>
+              <p>Exclusive packages for our valued clients</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="combined-block testimonials-block" data-aos="fade-up">
+          <h2 class="testimonials-title">Client Love</h2>
+          <div class="testimonial-carousel" data-aos="fade-up">
+            <div class="testimonial-track" aria-live="polite">
+              <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                <p class="testimonial-text">"Absolutely transformative experience. The attention to detail is unmatched."</p>
+                <p class="testimonial-author">— Sarah M.</p>
+              </div>
+              <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="150">
+                <p class="testimonial-text">"Luxury beauty at its finest. I've never felt more confident."</p>
+                <p class="testimonial-author">— Emma L.</p>
+              </div>
+              <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                <p class="testimonial-text">"A flawless, calming experience — the results are stunning."</p>
+                <p class="testimonial-author">— Maya P.</p>
+              </div>
+              <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="250">
+                <p class="testimonial-text">"Impeccable attention to detail and a truly luxurious experience."</p>
+                <p class="testimonial-author">— Olivia R.</p>
+              </div>
+              <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="300">
+                <p class="testimonial-text">"The VIP package was worth every penny — exceptional service."</p>
+                <p class="testimonial-author">— Zoe K.</p>
+              </div>
+              <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="350">
+                <p class="testimonial-text">"Professional, warm, and beautifully curated results."</p>
+                <p class="testimonial-author">— Emily T.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="combined-block pricing-block" data-aos="fade-up">
+          <h2 class="pricing-title">Investment</h2>
+          <div class="pricing-cards">
+            <div class="price-card centered" data-aos="fade-up" data-aos-delay="150">
+              <h3>Signature Collection</h3>
+              <p class="price">Starting at $150</p>
+              <p class="price-desc">Experience our signature beauty treatments</p>
+            </div>
+            <div class="price-card premium centered" data-aos="fade-up" data-aos-delay="300">
+              <h3>Luxury VIP Package</h3>
+              <p class="price">Starting at $500</p>
+              <p class="price-desc">Complete transformation with personal stylist</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="contact-wrapper">
+        <div class="contact-left">
+          <div class="contact-white" data-aos="fade-up" data-aos-duration="900">
+            <h2 class="contact-title">Ready for Your Beauty Transformation?</h2>
+            <p class="contact-subtitle">Let's create your perfect look together. Book a consultation with our expert team.</p>
+            <div class="contact-details">
+              <p><i class="fas fa-map-marker-alt"></i> Toronto, Canada</p>
+              <p><i class="fas fa-envelope"></i> hello@beautystudio.com</p>
+              <p><i class="fas fa-phone"></i> (416) 555-0123</p>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card contact-card right" data-aos="fade-left" data-aos-duration="900">
+          <h3>Book Your Moment</h3>
+          <p class="booking-subtitle">Experience luxury beauty</p>
+          <button class="book-btn">Schedule Consultation</button>
+          <div class="divider"></div>
+          <p class="cta-text">What would you like to do next?</p>
+          <button class="secondary-btn"><i class="fas fa-arrow-right"></i> Send Message</button>
+          <button class="secondary-btn"><i class="fas fa-arrow-right"></i> Learn More</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>Made with 💙 by <a href="https://iweb-designs.vercel.app">iwebdesigns</a> - © 2026</p>
+    </footer>
+    </main>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    if (window.AOS) AOS.init({ duration: 900, once: true, easing: 'ease-in-out' });
+  </script>
+
+  <!-- MAIN JS -->
+  <script src="main.js"></script>
+
+</body>
+</html>
