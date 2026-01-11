@@ -39,10 +39,14 @@ body {
 }
 
 /* SECOND VIDEO SECTION */
-
+.video-section {
+  position: relative;
+  height: 100vh;          /* VISUAL HEIGHT */
+  overflow: hidden;
+}
 
 .video-section-player {
-       /* NOT fixed here */
+  position: absolute;     /* NOT fixed here */
   inset: 0;
   width: 100%;
   height: 100vh;
@@ -51,6 +55,7 @@ body {
 
 /* SCROLL FUEL — REMOVED FROM FLOW */
 .scroll-length {
+  position: absolute;
   top: 100vh;             /* starts AFTER visible section */
   left: 0;
   width: 1px;
