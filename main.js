@@ -96,36 +96,8 @@ function setupVideoSync(videoEl, startTrigger, endTrigger) {
 setupVideoSync(video, "#home", "#portfolio");
 
 // Second video stays within its section
-// if (video2) setupVideoSync(video2, "#video2-section", "#video2-section");
+if (video2) setupVideoSync(video2, "#video2-section", "#video2-section");
 
-function setupPinnedVideo(videoEl, section, scrollLengthVH = 450) {
-  if (!videoEl) return;
-
-  function init() {
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: () => "+=" + window.innerHeight * (scrollLengthVH / 100),
-      scrub: 0.6,
-      pin: true,
-      pinSpacing: true,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-
-      onUpdate: (self) => {
-        videoEl.currentTime = videoEl.duration * self.progress;
-      }
-    });
-  }
-
-  if (videoEl.readyState >= 1) {
-    init();
-  } else {
-    videoEl.addEventListener("loadedmetadata", init, { once: true });
-  }
-}
-
-setupPinnedVideo(video2, "#video2-section", 500);
 
 /* ======================================
    SCROLL ANIMATIONS

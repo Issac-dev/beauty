@@ -25,7 +25,6 @@ body {
   color: var(--ink);
   overflow-x: hidden;
   font-weight: 400;
-  overscroll-behavior: none;
 }
 
 /* VIDEO */
@@ -41,20 +40,9 @@ body {
 
 /* SECOND VIDEO SECTION */
 .video-section {
-  height: 100vh;          /* VISUAL HEIGHT */
   position: relative;
+  height: 100vh;          /* VISUAL HEIGHT */
   overflow: hidden;
-  touch-action: pan-y;
-}
-/* SCROLL FUEL — invisible, does NOT affect layout */
-.video-section .scroll-length {
-  position: absolute;
-  top: 100vh;        /* starts AFTER the visible video */
-  left: 0;
-  width: 1px;
-  height: 500vh;     /* 🔴 CHANGE THIS VALUE TO TUNE SPEED */
-  pointer-events: none;
-  opacity: 0;
 }
 
 .video-section-player {
