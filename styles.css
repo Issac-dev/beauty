@@ -41,7 +41,7 @@ body {
 /* SECOND VIDEO SECTION */
 .video-section {
   position: relative;
-  height: 100vh;          /* VISUAL HEIGHT */
+  height: 150vh;          /* VISUAL HEIGHT */
   overflow: hidden;
 }
 
