@@ -25,6 +25,7 @@ body {
   color: var(--ink);
   overflow-x: hidden;
   font-weight: 400;
+  overscroll-behavior: none;
 }
 
 /* VIDEO */
@@ -40,9 +41,10 @@ body {
 
 /* SECOND VIDEO SECTION */
 .video-section {
-  position: relative;
   height: 100vh;          /* VISUAL HEIGHT */
+  position: relative;
   overflow: hidden;
+  touch-action: pan-y;
 }
 /* SCROLL FUEL — invisible, does NOT affect layout */
 .video-section .scroll-length {
