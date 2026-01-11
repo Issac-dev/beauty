@@ -16,10 +16,13 @@ let smoother = ScrollSmoother.create({
    VIDEO BACKGROUND - SCROLL SYNC
    ====================================== */
 const video = document.querySelector(".video-background");
-let src = video.currentSrc || video.src;
+const video2 = document.querySelector(".video-section-player");
 
+/* ======================================
+   HELPER: RUN ONCE
+   ====================================== */
 function once(el, event, fn, opts) {
-  var onceFn = function (e) {
+  const onceFn = function (e) {
     el.removeEventListener(event, onceFn);
     fn.apply(this, arguments);
   };
@@ -27,38 +30,46 @@ function once(el, event, fn, opts) {
   return onceFn;
 }
 
-once(document.documentElement, "touchstart", function (e) {
-  video.play();
-  video.pause();
-});
+/* ======================================
+   iOS VIDEO PRIMING (REQUIRED)
+   ====================================== */
+function primeVideo(videoEl) {
+  if (!videoEl) return;
 
-/* VIDEO 2 ELEMENT */
-const video2 = document.querySelector('.video-section-player');
+  videoEl.muted = true;
+  videoEl.setAttribute("playsinline", "");
+  videoEl.setAttribute("webkit-playsinline", "");
+  videoEl.preload = "auto";
 
-// setupVideoSync will initialize once metadata is available for each video
+  once(document.documentElement, "touchstart", () => {
+    videoEl.play().then(() => videoEl.pause()).catch(() => {});
+  });
+}
 
+primeVideo(video);
+primeVideo(video2);
 
+/* ======================================
+   VIDEO SCROLL SYNC (SAFE VERSION)
+   ====================================== */
 function setupVideoSync(videoEl, startTrigger, endTrigger) {
   function init() {
     if (!videoEl || !videoEl.duration) return;
 
-    // Flexible scrollTrigger: if the video is synced inside its own section
-    // (startTrigger === endTrigger), give it an extended pin + long end so the
-    // scrub feels cinematic and long.
     const st = {
       trigger: startTrigger,
       start: "top top",
       scrub: 0.5,
       markers: false,
+      invalidateOnRefresh: true,
       onUpdate: (self) => {
-        if (videoEl && videoEl.duration) {
-          videoEl.currentTime = videoEl.duration * self.progress;
-        }
+        videoEl.currentTime = videoEl.duration * self.progress;
       }
     };
 
+    // If the video is confined to its own section → long cinematic pin
     if (startTrigger === endTrigger) {
-      st.end = () => "+=" + Math.round(window.innerHeight * 5); // long scrub
+      st.end = () => "+=" + Math.round(window.innerHeight * 5);
       st.pin = true;
       st.pinSpacing = true;
       st.anticipatePin = 1;
@@ -67,10 +78,7 @@ function setupVideoSync(videoEl, startTrigger, endTrigger) {
       st.end = "bottom bottom";
     }
 
-    gsap.to(videoEl, {
-      currentTime: videoEl.duration,
-      scrollTrigger: st
-    });
+    ScrollTrigger.create(st);
   }
 
   if (videoEl.readyState >= 1 && videoEl.duration) {
@@ -80,32 +88,16 @@ function setupVideoSync(videoEl, startTrigger, endTrigger) {
   }
 }
 
-// Sync hero video from #home through #portfolio
+/* ======================================
+   INIT VIDEO SCROLLING
+   ====================================== */
+
+// Hero video spans multiple sections
 setupVideoSync(video, "#home", "#portfolio");
 
-// Sync second video only within its own section
+// Second video stays within its section
 if (video2) setupVideoSync(video2, "#video2-section", "#video2-section");
 
-/* Blob optimization for HTTP URLs only (both videos) */
-setTimeout(function () {
-  [video, video2].forEach((v) => {
-    if (!v) return;
-    let s = v.currentSrc || v.src || "";
-    if (window["fetch"] && s && s.startsWith("http")) {
-      fetch(s)
-        .then((response) => response.blob())
-        .then((response) => {
-          var blobURL = URL.createObjectURL(response);
-          var t = v.currentTime || 0;
-          v.setAttribute("src", blobURL);
-          v.currentTime = t + 0.01;
-        })
-        .catch((error) => {
-          console.log("Video blob optimization skipped:", error.message);
-        });
-    }
-  });
-}, 1000);
 
 /* ======================================
    SCROLL ANIMATIONS

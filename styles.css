@@ -44,6 +44,16 @@ body {
   height: 100vh;          /* VISUAL HEIGHT */
   overflow: hidden;
 }
+/* SCROLL FUEL — invisible, does NOT affect layout */
+.video-section .scroll-length {
+  position: absolute;
+  top: 100vh;        /* starts AFTER the visible video */
+  left: 0;
+  width: 1px;
+  height: 500vh;     /* 🔴 CHANGE THIS VALUE TO TUNE SPEED */
+  pointer-events: none;
+  opacity: 0;
+}
 
 .video-section-player {
   position: absolute;     /* NOT fixed here */
