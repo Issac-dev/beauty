@@ -40,13 +40,13 @@ body {
 
 /* SECOND VIDEO SECTION */
 .video-section {
-  position: relative;
+  position: fixed;
   height: 100vh;          /* VISUAL HEIGHT */
   overflow: hidden;
 }
 
 .video-section-player {
-  position: absolute;     /* NOT fixed here */
+  position: fixed;   /* NOT fixed here */
   inset: 0;
   width: 100%;
   height: 100vh;
