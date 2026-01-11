@@ -5,12 +5,6 @@ console.clear();
 /* ======================================
    SMOOTH SCROLL SETUP (Create FIRST)
    ====================================== */
-let smoother = ScrollSmoother.create({
-  smooth: 1.5,
-  effects: true,
-  wrapper: "#smooth-wrapper",
-  content: "#smooth-content"
-});
 
 /* ======================================
    VIDEO BACKGROUND - SCROLL SYNC
